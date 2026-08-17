@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NaCl Summer Internship 2026 - Git Demo App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-globes">
+    <div class="globe globe-1"></div>
+    <div class="globe globe-2"></div>
+    <div class="globe globe-3"></div>
+  </div>
+
+  <header class="app-header">
+    <div class="container header-container">
+      <div class="logo">
+        <span class="logo-icon">🚀</span>
+        <div class="logo-text">
+          <h1>NaCl Git Demo</h1>
+          <p class="subtitle">2026 Summer Internship</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span class="badge badge-live">● Live Demo</span>
+        <button id="themeToggle" class="btn btn-icon" title="テーマ切り替え">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero Banner -->
+    <section class="hero-card">
+      <div class="hero-content">
+        <h2>チーム開発を体験しよう！ <span class="gradient-text">Git & Pull Request</span></h2>
+        <p>
+          このWebページは、2026年度 夏季インターンシップ「Git講義」のデモ用アプリケーションです。<br>
+          ブランチ作成、コミット、コンフリクト解消（rebase）、Pull Requestの体験に使用します。
+        </p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num" id="memberCount">3</span>
+            <span class="stat-label">メンバー</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="totalLikes">24</span>
+            <span class="stat-label">総いいね数</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">Git</span>
+            <span class="stat-label">バージョン管理</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter & Action Bar -->
+    <section class="action-bar">
+      <div class="filter-group">
+        <button class="btn-filter active" data-filter="all">すべて</button>
+        <button class="btn-filter" data-filter="mentor">メンター</button>
+        <button class="btn-filter" data-filter="intern">インターン生</button>
+      </div>
+      <button id="openModalBtn" class="btn btn-primary">
+        <span>＋ メンバーカードを追加</span>
+      </button>
+    </section>
+
+    <!-- Member Cards Grid -->
+    <section class="cards-grid" id="cardsGrid">
+      <!-- Member 1 (Mentor) -->
+      <article class="card" data-role="mentor" id="card-kano">
+        <div class="card-header">
+          <div class="avatar-wrapper">
+            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Kano" alt="加納 寛之" class="avatar">
+            <span class="role-badge mentor">講師 / メンター</span>
+          </div>
+          <button class="btn-like" data-id="kano">
+            <span class="heart">❤️</span> <span class="like-count">12</span>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="member-name">加納 寛之</h3>
+          <p class="member-dept">システム開発1G</p>
+          <p class="member-bio">Git講義の講師を担当しています。チーム開発の楽しさとGitの便利さをしっかりお伝えします！</p>
+          <div class="tag-list">
+            <span class="tag">Git</span>
+            <span class="tag">Ruby / Rails</span>
+            <span class="tag">チーム開発</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Member 2 (Mentor) -->
+      <article class="card" data-role="mentor" id="card-nacl">
+        <div class="card-header">
+          <div class="avatar-wrapper">
+            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=NaCl" alt="NaCl 先輩エンジニア" class="avatar">
+            <span class="role-badge mentor">エンジニア</span>
+          </div>
+          <button class="btn-like" data-id="nacl">
+            <span class="heart">❤️</span> <span class="like-count">8</span>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="member-name">NaCl 先輩エンジニア</h3>
+          <p class="member-dept">Webソリューション事業部</p>
+          <p class="member-bio">オープンソースソフトウェアとWebアプリアーキテクチャが大好きです。気軽に話しかけてください！</p>
+          <div class="tag-list">
+            <span class="tag">JavaScript</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Linux</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Member 3 (Intern) -->
+      <article class="card" data-role="intern" id="card-intern-demo">
+        <div class="card-header">
+          <div class="avatar-wrapper">
+            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=SummerStudent" alt="インターン生（サンプル）" class="avatar">
+            <span class="role-badge intern">インターン生</span>
+          </div>
+          <button class="btn-like" data-id="intern-demo">
+            <span class="heart">❤️</span> <span class="like-count">4</span>
+          </button>
+        </div>
+        <div class="card-body">
+          <h3 class="member-name">インターン生 Aさん</h3>
+          <p class="member-dept">2026 夏季インターン</p>
+          <p class="member-bio">PRデモでカード追加やプロフィール編集にチャレンジ中！Git rebase を習得します。</p>
+          <div class="tag-list">
+            <span class="tag">HTML/CSS</span>
+            <span class="tag">Git初学者</span>
+            <span class="tag">挑戦中</span>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Add Member Modal -->
+  <div class="modal-overlay" id="addModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>メンバーカードを追加 (デモ用)</h3>
+        <button class="btn-close" id="closeModalBtn">&times;</button>
+      </div>
+      <form id="addMemberForm">
+        <div class="form-group">
+          <label for="inputName">お名前</label>
+          <input type="text" id="inputName" placeholder="例: 山田 太郎" required>
+        </div>
+        <div class="form-group">
+          <label for="inputDept">所属 / 部署</label>
+          <input type="text" id="inputDept" placeholder="例: 2026 夏季インターン Aチーム" required>
+        </div>
+        <div class="form-group">
+          <label for="inputRole">区分</label>
+          <select id="inputRole">
+            <option value="intern">インターン生</option>
+            <option value="mentor">メンター / 社員</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="inputBio">自己紹介メッセージ</label>
+          <textarea id="inputBio" rows="3" placeholder="Git講義で学びたいことや意気込み"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="inputTags">スキルタグ（カンマ区切り）</label>
+          <input type="text" id="inputTags" placeholder="例: Git, Python, Webデザイン">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancelModalBtn">キャンセル</button>
+          <button type="submit" class="btn btn-primary">カードを追加</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <div class="container">
+      <p>© 2026 Network Applied Communication Laboratory Ltd. (NaCl) - Summer Internship Git Lesson</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
